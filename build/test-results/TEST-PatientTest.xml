@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="PatientTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2016-09-20T18:51:59" hostname="epicodus-10.local" time="0.188">
+<testsuite name="PatientTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2016-09-20T22:52:35" hostname="epicodus-10.local" time="0.097">
   <properties/>
-  <testcase name="equals_returnsTrueIfDescriptionsAretheSame" classname="PatientTest" time="0.137"/>
-  <testcase name="Patient_instantiatesWithId_0" classname="PatientTest" time="0.004"/>
+  <testcase name="equals_returnsTrueIfDescriptionsAretheSame" classname="PatientTest" time="0.025"/>
   <testcase name="save_returnsTrueIfDescriptionsAretheSame" classname="PatientTest" time="0.014"/>
-  <testcase name="Patient_instantiatesWithIllness_String" classname="PatientTest" time="0.006"/>
+  <testcase name="Patient_instantiatesWithIllness_String" classname="PatientTest" time="0.004"/>
   <testcase name="Patient_instantiatesWithName_String" classname="PatientTest" time="0.004"/>
+  <testcase name="Patient_instantiatesWithId" classname="PatientTest" time="0.01"/>
   <testcase name="Patient_instantiatesCorrectly_true" classname="PatientTest" time="0.004"/>
   <testcase name="Patient_instantiatesWithDoctor_String" classname="PatientTest" time="0.005"/>
   <testcase name="save_assignsIdToObject" classname="PatientTest" time="0.013"/>
+  <testcase name="find_returnsPatientWithSameId_secondPatient" classname="PatientTest" time="0.017"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="DoctorTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2016-09-20T22:52:35" hostname="epicodus-10.local" time="0.141">
+  <properties/>
+  <testcase name="Doctor_instantiatesWithSpeciality_String" classname="DoctorTest" time="0.081"/>
+  <testcase name="equals_returnsTrueIfNamesAretheSame" classname="DoctorTest" time="0.006"/>
+  <testcase name="Doctor_instantiatesCorrectly_true" classname="DoctorTest" time="0.005"/>
+  <testcase name="save_savesIntoDatabase_true" classname="DoctorTest" time="0.038"/>
+  <testcase name="Doctor_instantiatesWithPatientId_Int" classname="DoctorTest" time="0.005"/>
+  <testcase name="Doctor_instantiatesWithName_String" classname="DoctorTest" time="0.006"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

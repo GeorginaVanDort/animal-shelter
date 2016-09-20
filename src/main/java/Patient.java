@@ -9,11 +9,10 @@ import org.sql2o.*;
     private String doctor;
     private int id;
 
-  public Patient(String name, String illness, String doctor, int id) {
+  public Patient(String name, String illness, String doctor) {
     this.name = name;
     this.illness = illness;
     this.doctor = doctor;
-    this.id = id;
   }
 
   public String getName() {
@@ -33,7 +32,7 @@ import org.sql2o.*;
   }
 
   public static List<Patient> all(){
-    String sql = "SELECT name, illness, doctor FROM patients";
+    String sql = "SELECT id, name, illness, doctor FROM patients";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql).executeAndFetch(Patient.class);
     }
@@ -45,16 +44,30 @@ import org.sql2o.*;
       return false;
     } else {
       Patient newPatient = (Patient) otherPatient;
-      return this.getName().equals(newPatient.getName());
+      return this.getName().equals(newPatient.getName()) && this.getId() == newPatient.getId();
     }
   }
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO patients (name) VALUES (:name)";
-      con.createQuery(sql)
+      String sql = "INSERT INTO patients(name, illness, doctor) VALUES(:name, :illness, :doctor)";
+      this.id = (int) con.createQuery(sql, true)
         .addParameter("name", this.name)
-        .executeUpdate();
+        .addParameter("illness", this.illness)
+        .addParameter("doctor", this.doctor)
+        .executeUpdate()
+        .getKey();
+      }
     }
+
+  public static Patient find(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM patients where id=:id";
+      Patient patient = con.createQuery(sql)
+        .addParameter("id", id)
+        .executeAndFetchFirst(Patient.class);
+        return patient;
+      }
+    }
+
   }
-}
