@@ -23,41 +23,67 @@ public class DoctorTest {
 
   @Test
   public void Doctor_instantiatesCorrectly_true() {
-    Doctor testDoctor = new Doctor("Orthopedic Surgeon", "Dr. Payne", 1);
+    Doctor testDoctor = new Doctor("Orthopedic Surgeon", "Dr. Payne");
     assertEquals(true, testDoctor instanceof Doctor);
   }
 
   @Test
   public void Doctor_instantiatesWithName_String() {
-    Doctor myDoctor = new Doctor("Orthopedic Surgeon", "Dr. Payne", 1);
+    Doctor myDoctor = new Doctor("Orthopedic Surgeon", "Dr. Payne");
     assertEquals("Dr. Payne", myDoctor.getName());
   }
 
   @Test
   public void Doctor_instantiatesWithSpeciality_String() {
-    Doctor myDoctor = new Doctor("Orthopedic Surgeon", "Dr. Payne", 1);
+    Doctor myDoctor = new Doctor("Orthopedic Surgeon", "Dr. Payne");
     assertEquals("Orthopedic Surgeon", myDoctor.getSpeciality());
   }
 
   @Test
-  public void Doctor_instantiatesWithPatientId_Int() {
-    Doctor myDoctor = new Doctor("Orthopedic Surgeon", "Dr. Payne", 1);
-    assertEquals(1, myDoctor.getPatientId());
-  }
-
-  @Test
    public void equals_returnsTrueIfNamesAretheSame() {
-     Doctor firstDoctor = new Doctor("Orthopedic Surgeon", "Dr. Payne", 1);
-     Doctor secondDoctor = new Doctor("Orthopedic Surgeon", "Dr. Payne", 1);
+     Doctor firstDoctor = new Doctor("Orthopedic Surgeon", "Dr. Payne");
+     Doctor secondDoctor = new Doctor("Orthopedic Surgeon", "Dr. Payne");
      assertTrue(firstDoctor.equals(secondDoctor));
    }
 
    @Test
     public void save_savesIntoDatabase_true() {
-      Doctor myDoctor = new Doctor("Orthopedic Surgeon", "Dr. Payne", 1);
+      Doctor myDoctor = new Doctor("Orthopedic Surgeon", "Dr. Payne");
       myDoctor.save();
       assertTrue(Doctor.all().get(0).equals(myDoctor));
-
     }
 
+    @Test
+    public void all_returnsAllInstancesOfDoctor_true() {
+      Doctor firstDoctor = new Doctor("Orthopedic Surgeon", "Dr. Payne");
+      firstDoctor.save();
+      Doctor secondDoctor = new Doctor("Patiatrist", "Dr. Ouch");
+      secondDoctor.save();
+      assertEquals(true, Doctor.all().get(0).equals(firstDoctor));
+      assertEquals(true, Doctor.all().get(1).equals(secondDoctor));
+    }
+
+    @Test
+    public void save_assignsIdToObject() {
+      Doctor myDoctor = new Doctor("Orthopedic Surgeon", "Dr. Payne");
+      myDoctor.save();
+      Doctor savedDoctor = Doctor.all().get(0);
+      assertEquals(myDoctor.getId(), savedDoctor.getId());
+    }
+
+    @Test
+    public void getId_doctorsInstantiateWithAnId_1() {
+      Doctor testDoctor = new Doctor("Orthopedic Surgeon", "Dr. Payne");
+      testDoctor.save();
+      assertTrue(testDoctor.getId() > 0);
+    }
+
+    @Test
+    public void find_returnsDoctorWithSameId_secondDoctor() {
+      Doctor firstDoctor = new Doctor("Orthopedic Surgeon", "Dr. Payne");
+      firstDoctor.save();
+      Doctor secondDoctor = new Doctor("Orthopedic Surgeon", "Dr. Payne");
+      secondDoctor.save();
+      assertEquals(Doctor.find(secondDoctor.getId()), secondDoctor);
+    }
 }

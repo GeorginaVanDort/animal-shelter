@@ -6,10 +6,10 @@ import org.sql2o.*;
   public class Patient {
     private String name;
     private String illness;
-    private String doctor;
+    private int doctor;
     private int id;
 
-  public Patient(String name, String illness, String doctor) {
+  public Patient(String name, String illness, int doctor) {
     this.name = name;
     this.illness = illness;
     this.doctor = doctor;
@@ -23,7 +23,7 @@ import org.sql2o.*;
     return illness;
   }
 
-  public String getDoctor(){
+  public int getDoctor(){
     return doctor;
   }
 
