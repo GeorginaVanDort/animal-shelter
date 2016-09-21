@@ -81,4 +81,16 @@ import org.sql2o.*;
       .executeUpdate();
     }
   }
+
+  public void update(String name, String illness, int doctor) {
+    try(Connection con = DB.sql2o.open()) {
+    String sql = "UPDATE patients SET name = :name, illness = :illness, doctor = :doctor WHERE id = :id";
+    con.createQuery(sql)
+      .addParameter("name", name)
+      .addParameter("illness", illness)
+      .addParameter("doctor", doctor)
+      .addParameter("id", id)
+      .executeUpdate();
+    }
+  }
 }
