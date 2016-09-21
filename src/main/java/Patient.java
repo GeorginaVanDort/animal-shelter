@@ -72,4 +72,13 @@ import org.sql2o.*;
         return patient;
       }
     }
+
+  public void delete() {
+    try(Connection con = DB.sql2o.open()) {
+    String sql = "DELETE FROM patients WHERE id = :id;";
+    con.createQuery(sql)
+      .addParameter("id", id)
+      .executeUpdate();
+    }
   }
+}

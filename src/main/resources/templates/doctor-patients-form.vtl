@@ -1,0 +1,17 @@
+<h1>Add a Patient to $doctor.getName()</h1>
+
+<form action="/patients" method="post">
+  <input id="doctor" name="doctor" type="hidden" value="$doctor.getId()">
+
+  <div class="form-group">
+    <label for="name">Patient Name</label>
+    <input id="name" name="name" type="text" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="illness">Main Illness</label>
+    <input id="illness" name="illness" type="text" class="form-control">
+  </div>
+
+  <button type="submit" class="btn btn-success">Add Task</button>
+</form>
