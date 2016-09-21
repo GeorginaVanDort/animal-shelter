@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="DoctorTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2016-09-21T16:22:52" hostname="epicodus-2.local" time="0.216">
+<testsuite name="DoctorTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2016-09-21T18:36:46" hostname="epicodus-2.local" time="0.221">
   <properties/>
-  <testcase name="Doctor_instantiatesWithSpeciality_String" classname="DoctorTest" time="0.077"/>
+  <testcase name="Doctor_instantiatesWithSpeciality_String" classname="DoctorTest" time="0.079"/>
   <testcase name="equals_returnsTrueIfNamesAretheSame" classname="DoctorTest" time="0.005"/>
-  <testcase name="find_returnsDoctorWithSameId_secondDoctor" classname="DoctorTest" time="0.042"/>
+  <testcase name="find_returnsDoctorWithSameId_secondDoctor" classname="DoctorTest" time="0.043"/>
   <testcase name="getId_doctorsInstantiateWithAnId_1" classname="DoctorTest" time="0.01"/>
-  <testcase name="Doctor_instantiatesCorrectly_true" classname="DoctorTest" time="0.004"/>
+  <testcase name="Doctor_instantiatesCorrectly_true" classname="DoctorTest" time="0.005"/>
   <testcase name="getPatients_retrievesALlPatientsFromDatabase_patientsList" classname="DoctorTest" time="0.025"/>
-  <testcase name="save_savesIntoDatabase_true" classname="DoctorTest" time="0.014"/>
-  <testcase name="save_assignsIdToObject" classname="DoctorTest" time="0.012"/>
-  <testcase name="Doctor_instantiatesWithName_String" classname="DoctorTest" time="0.005"/>
-  <testcase name="all_returnsAllInstancesOfDoctor_true" classname="DoctorTest" time="0.02"/>
+  <testcase name="save_savesIntoDatabase_true" classname="DoctorTest" time="0.015"/>
+  <testcase name="save_assignsIdToObject" classname="DoctorTest" time="0.013"/>
+  <testcase name="Doctor_instantiatesWithName_String" classname="DoctorTest" time="0.004"/>
+  <testcase name="all_returnsAllInstancesOfDoctor_true" classname="DoctorTest" time="0.021"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
