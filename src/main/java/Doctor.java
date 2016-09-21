@@ -64,5 +64,13 @@ public Doctor(String speciality, String name) {
       }
     }
 
+    public List<Patient> getPatients() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM patients where doctor=:id";
+      return con.createQuery(sql)
+        .addParameter("id", this.id)
+        .executeAndFetch(Patient.class);
+    }
+  }
 
 }

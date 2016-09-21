@@ -1,7 +1,7 @@
 import org.sql2o.*;
 import org.junit.*;
 import static org.junit.Assert.*;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class DoctorTest {
@@ -85,5 +85,17 @@ public class DoctorTest {
       Doctor secondDoctor = new Doctor("Orthopedic Surgeon", "Dr. Payne");
       secondDoctor.save();
       assertEquals(Doctor.find(secondDoctor.getId()), secondDoctor);
+    }
+
+    @Test
+    public void getPatients_retrievesALlPatientsFromDatabase_patientsList() {
+      Doctor myDoctor = new Doctor("Orthopedic Surgeon", "Dr. Payne");
+      myDoctor.save();
+      Patient firstPatient = new Patient("Fred", "Tuberculosis", myDoctor.getId());
+      firstPatient.save();
+      Patient secondPatient = new Patient("Fred", "Tuberculosis", myDoctor.getId());
+      secondPatient.save();
+      Patient[] patients = new Patient[] { firstPatient, secondPatient };
+      assertTrue(myDoctor.getPatients().containsAll(Arrays.asList(patients)));
     }
 }

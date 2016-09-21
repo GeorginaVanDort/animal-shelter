@@ -44,7 +44,10 @@ import org.sql2o.*;
       return false;
     } else {
       Patient newPatient = (Patient) otherPatient;
-      return this.getName().equals(newPatient.getName()) && this.getId() == newPatient.getId();
+      return this.getName().equals(newPatient.getName())
+      && this.getId() == newPatient.getId()
+      && this.getIllness().equals(newPatient.getIllness())
+      && this.getDoctor() == newPatient.getDoctor();
     }
   }
 
@@ -69,5 +72,4 @@ import org.sql2o.*;
         return patient;
       }
     }
-
   }
