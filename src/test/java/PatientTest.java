@@ -95,4 +95,12 @@ public class PatientTest{
       assertEquals(savedPatient.getDoctor(), myDoctor.getId());
     }
 
+    @Test
+    public void update_updatesPatientDescription_true() {
+      Patient myPatient = new Patient("Fred", "Tuberculosis", 1);
+      myPatient.save();
+      myPatient.update("Jim", "Tuberculosis", 1);
+      assertEquals("Jim", Patient.find(myPatient.getId()).getName());
+    }
+
 }

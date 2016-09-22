@@ -1,6 +1,6 @@
 # _Template_
 
-#### By _Ewa Manek_
+####
 
 ## Description
 
@@ -16,10 +16,8 @@ _A template java app with support for gradle, spark and junit testing_
 
 ## GitHub link
 
-https://github.com/ewajm/javaSparkTemplate
-
 ## Licensing
 
 * MIT
 
-Copyright (c) 2016 **_Ewa Manek_**
+Copyright (c) 2016
