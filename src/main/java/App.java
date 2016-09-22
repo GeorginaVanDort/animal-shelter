@@ -60,6 +60,16 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    get("/doctors/:doctor_id/patients/:id", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Patient patient = Patient.find(Integer.parseInt(request.params(":id")));
+      Doctor doctor = Doctor.find(patient.getDoctor());
+      model.put("patient", patient);
+      model.put("doctor", doctor);
+      model.put("template", "templates/patient.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
     get("/doctors/new", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       model.put("template", "templates/doctor-form.vtl");
@@ -74,13 +84,6 @@ public class App {
       newDoctor.save();
       model.put("doctor", newDoctor);
       model.put("template", "templates/doctor-success.vtl");
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
-
-    get("/doctors", (request, response) -> {
-      Map<String, Object> model = new HashMap<String, Object>();
-      model.put("doctors", Doctor.all());
-      model.put("template", "templates/doctors.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
@@ -104,24 +107,14 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    get("/doctors/:doctor_id/patients/:id", (request, response) -> {
-      Map<String, Object> model = new HashMap<String, Object>();
-      Patient patient = Patient.find(Integer.parseInt(request.params(":id")));
-      Doctor doctor = Doctor.find(patient.getDoctor());
-      model.put("patient", patient);
-      model.put("doctor", doctor);
-      model.put("template", "templates/patient.vtl");
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
-
     post("/doctors/:doctor/patients/:id", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       Patient patient = Patient.find(Integer.parseInt(request.params("id")));
       String name = request.queryParams("name");
       String illness = request.queryParams("illness");
-      int doctorid = Integer.parseInt(request.params("doctor"));
+      // int doctorid = Integer.parseInt(request.params("doctor"));
       Doctor doctor = Doctor.find(patient.getDoctor());
-      patient.update(name, illness, doctorid);
+      patient.update(name, illness);
       String url = String.format("/doctors/%d/patients/%d", doctor.getId(), patient.getId());
       response.redirect(url);
       return new ModelAndView(model, layout);

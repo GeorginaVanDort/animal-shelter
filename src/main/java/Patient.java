@@ -19,11 +19,11 @@ import org.sql2o.*;
     return name;
   }
 
-  public String getIllness(){
+  public String getIllness() {
     return illness;
   }
 
-  public int getDoctor(){
+  public int getDoctor() {
     return doctor;
   }
 
@@ -31,7 +31,7 @@ import org.sql2o.*;
     return id;
   }
 
-  public static List<Patient> all(){
+  public static List<Patient> all() {
     String sql = "SELECT id, name, illness, doctor FROM patients";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql).executeAndFetch(Patient.class);
@@ -82,13 +82,13 @@ import org.sql2o.*;
     }
   }
 
-  public void update(String name, String illness, int doctor) {
+  public void update(String name, String illness) {
     try(Connection con = DB.sql2o.open()) {
-    String sql = "UPDATE patients SET name = :name, illness = :illness, doctor = :doctor WHERE id = :id";
+    String sql = "UPDATE patients SET name = :name, illness = :illness WHERE id = :id";
     con.createQuery(sql)
       .addParameter("name", name)
       .addParameter("illness", illness)
-      .addParameter("doctor", doctor)
+      // .addParameter("doctor", doctor)
       .addParameter("id", id)
       .executeUpdate();
     }

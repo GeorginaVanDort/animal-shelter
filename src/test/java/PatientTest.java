@@ -103,4 +103,12 @@ public class PatientTest{
       assertEquals("Jim", Patient.find(myPatient.getId()).getName());
     }
 
+    @Test
+    public void delete_deletesPatient_true() {
+      Patient myPatient = new Patient("Fred", "Tuberculosis", 1);
+      myPatient.save();
+      int myPatientId = myPatient.getId();
+      myPatient.delete();
+      assertEquals(null, Patient.find(myPatientId));
+    }
 }
